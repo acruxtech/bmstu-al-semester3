@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Task2.Program</StartupObject>
+    <StartupObject>Task3.Program</StartupObject>
   </PropertyGroup>
 
 </Project>

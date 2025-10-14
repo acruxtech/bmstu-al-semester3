@@ -57,6 +57,51 @@ namespace Task3
             }
         }
     }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("=== Демонстрация CarCatalog ===");
+            
+            Car[] cars = {
+                new Car("Toyota Camry", 2020, 200),
+                new Car("BMW X5", 2021, 250),
+                new Car("Honda Civic", 2019, 180),
+                new Car("Audi A4", 2020, 240),
+                new Car("Mercedes C-Class", 2021, 220)
+            };
+
+            CarCatalog catalog = new CarCatalog(cars);
+
+            Console.WriteLine("Все машины:");
+            foreach (var car in catalog)
+            {
+                Console.WriteLine(car);
+            }
+
+            Console.WriteLine("\nМашины в обратном порядке:");
+            foreach (var car in catalog.Reverse())
+            {
+                Console.WriteLine(car);
+            }
+
+            Console.WriteLine("\nМашины 2020 года:");
+            foreach (var car in catalog.WhereYear(2020))
+            {
+                Console.WriteLine(car);
+            }
+
+            Console.WriteLine("\nМашины со скоростью >= 220 км/ч:");
+            foreach (var car in catalog.WhereMaxSpeedAtLeast(220))
+            {
+                Console.WriteLine(car);
+            }
+
+            Console.WriteLine("\nНажмите любую клавишу для выхода...");
+            Console.ReadKey();
+        }
+    }
 }
 
 

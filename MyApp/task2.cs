@@ -5,9 +5,9 @@ namespace Task2
 {
     public class Car
     {
-        public string Name { get; init; }
-        public int ProductionYear { get; init; }
-        public int MaxSpeed { get; init; }
+        public string Name { get; set; }
+        public int ProductionYear { get; set; }
+        public int MaxSpeed { get; set; }
 
         public Car(string name, int productionYear, int maxSpeed)
         {
@@ -43,7 +43,6 @@ namespace Task2
                 case "year":
                     return x.ProductionYear.CompareTo(y.ProductionYear);
                 case "speed":
-                case "maxspeed":
                     return x.MaxSpeed.CompareTo(y.MaxSpeed);
                 default:
                     return 0;
