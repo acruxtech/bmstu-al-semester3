@@ -1,88 +1,199 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Task2
 {
-    public class Car
+    public class MyList<T> : IEnumerable<T>
     {
-        public string Name { get; set; }
-        public int ProductionYear { get; set; }
-        public int MaxSpeed { get; set; }
+        private T[] items;
+        private int count;
+        private int capacity;
 
-        public Car(string name, int productionYear, int maxSpeed)
+        public int Count => count;
+
+        public int Capacity => capacity;
+
+        public MyList()
         {
-            Name = name;
-            ProductionYear = productionYear;
-            MaxSpeed = maxSpeed;
+            capacity = 4;
+            items = new T[capacity];
+            count = 0;
         }
 
-        public override string ToString()
+        public MyList(int initialCapacity)
         {
-            return $"{Name} ({ProductionYear}), {MaxSpeed} km/h";
-        }
-    }
-
-    public class CarComparer : IComparer<Car>
-    {
-        private readonly string key;
-
-        public CarComparer(string key)
-        {
-            this.key = key;
+            if (initialCapacity < 0)
+                throw new ArgumentException("Емкость не может быть отрицательной");
+            
+            capacity = initialCapacity > 0 ? initialCapacity : 4;
+            items = new T[capacity];
+            count = 0;
         }
 
-        public int Compare(Car? x, Car? y)
+        public void Add(T item)
         {
-            if (ReferenceEquals(x, y)) return 0;
-            if (x is null) return -1;
-            if (y is null) return 1;
-            switch (key)
+            if (count >= capacity)
             {
-                case "name":
-                    return x.Name.CompareTo(y.Name);
-                case "year":
-                    return x.ProductionYear.CompareTo(y.ProductionYear);
-                case "speed":
-                    return x.MaxSpeed.CompareTo(y.MaxSpeed);
-                default:
-                    return 0;
+                Resize();
             }
+            items[count] = item;
+            count++;
+        }
+
+        public T this[int index]
+        {
+            get
+            {
+                if (index < 0 || index >= count)
+                    throw new IndexOutOfRangeException($"Индекс {index} выходит за границы списка (0-{count - 1})");
+                return items[index];
+            }
+            set
+            {
+                if (index < 0 || index >= count)
+                    throw new IndexOutOfRangeException($"Индекс {index} выходит за границы списка (0-{count - 1})");
+                items[index] = value;
+            }
+        }
+
+        private void Resize()
+        {
+            capacity *= 2;
+            T[] newItems = new T[capacity];
+            for (int i = 0; i < count; i++)
+            {
+                newItems[i] = items[i];
+            }
+            items = newItems;
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                yield return items[i];
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public void Clear()
+        {
+            count = 0;
+        }
+
+        public bool Contains(T item)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (EqualityComparer<T>.Default.Equals(items[i], item))
+                    return true;
+            }
+            return false;
+        }
+
+        public int IndexOf(T item)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (EqualityComparer<T>.Default.Equals(items[i], item))
+                    return i;
+            }
+            return -1;
+        }
+
+        public void Show()
+        {
+            Console.Write("[");
+            for (int i = 0; i < count; i++)
+            {
+                Console.Write(items[i]);
+                if (i < count - 1)
+                    Console.Write(", ");
+            }
+            Console.WriteLine("]");
         }
     }
 
     class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
-            var cars = new[]
+            Console.WriteLine("=== Демонстрация работы с MyList<T> ===");
+
+            // Создание списка целых чисел
+            Console.WriteLine("\n1. Создание списка целых чисел:");
+            MyList<int> intList = new MyList<int>();
+            Console.WriteLine($"Начальная емкость: {intList.Capacity}, количество элементов: {intList.Count}");
+
+            // Добавление элементов
+            Console.WriteLine("\n2. Добавление элементов:");
+            for (int i = 1; i <= 5; i++)
             {
-                new Car("Audi A4", 2018, 240),
-                new Car("BMW 320i", 2016, 235),
-                new Car("Toyota Camry", 2020, 210),
-                new Car("Volkswagen Golf", 2015, 220),
-                new Car("Mercedes C200", 2019, 245)
-            };
+                intList.Add(i * 10);
+                Console.WriteLine($"Добавлен элемент {i * 10}, емкость: {intList.Capacity}, количество: {intList.Count}");
+            }
 
-            Array.Sort(cars, new CarComparer("name"));
-            Print("По названию", cars);
+            // Вывод списка
+            Console.WriteLine("\n3. Содержимое списка:");
+            intList.Show();
 
-            Array.Sort(cars, new CarComparer("year"));
-            Print("По году", cars);
+            // Использование индексатора
+            Console.WriteLine("\n4. Использование индексатора:");
+            Console.WriteLine($"intList[0] = {intList[0]}");
+            Console.WriteLine($"intList[2] = {intList[2]}");
+            Console.WriteLine($"intList[4] = {intList[4]}");
 
-            Array.Sort(cars, new CarComparer("speed"));
-            Print("По макс скорости", cars);
-        }
+            // Изменение элемента через индексатор
+            Console.WriteLine("\n5. Изменение элемента через индексатор:");
+            Console.WriteLine($"До изменения: intList[1] = {intList[1]}");
+            intList[1] = 999;
+            Console.WriteLine($"После изменения: intList[1] = {intList[1]}");
+            intList.Show();
 
-        private static void Print(string title, Car[] cars)
-        {
-            Console.WriteLine(title);
-            foreach (var car in cars)
+            // Создание списка строк
+            Console.WriteLine("\n6. Создание списка строк:");
+            MyList<string> stringList = new MyList<string>();
+            stringList.Add("Hello");
+            stringList.Add("World");
+            stringList.Add("C#");
+            stringList.Add("Programming");
+            stringList.Show();
+
+            // Использование foreach (благодаря IEnumerable<T>)
+            Console.WriteLine("\n7. Использование foreach:");
+            Console.Write("Элементы списка строк: ");
+            foreach (string item in stringList)
             {
-                Console.WriteLine(car);
+                Console.Write($"{item} ");
             }
             Console.WriteLine();
+
+            // Демонстрация инициализатора коллекции
+            Console.WriteLine("\n8. Демонстрация инициализатора коллекции:");
+            MyList<double> doubleList = new MyList<double> { 1.5, 2.7, 3.14, 4.2, 5.0 };
+            Console.WriteLine($"Список чисел с плавающей точкой:");
+            doubleList.Show();
+            Console.WriteLine($"Количество элементов: {doubleList.Count}");
+
+            // Дополнительные методы
+            Console.WriteLine("\n9. Дополнительные методы:");
+            Console.WriteLine($"Содержит ли список число 3.14? {doubleList.Contains(3.14)}");
+            Console.WriteLine($"Индекс числа 2.7: {doubleList.IndexOf(2.7)}");
+            Console.WriteLine($"Индекс несуществующего числа: {doubleList.IndexOf(10.0)}");
+
+            // Очистка списка
+            Console.WriteLine("\n10. Очистка списка:");
+            Console.WriteLine($"До очистки: количество = {doubleList.Count}");
+            doubleList.Clear();
+            Console.WriteLine($"После очистки: количество = {doubleList.Count}");
+
+            Console.WriteLine("\nНажмите любую клавишу для выхода...");
+            Console.ReadKey();
         }
     }
 }
-
-

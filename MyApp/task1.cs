@@ -4,37 +4,44 @@ namespace Task1
 {
     public class MyMatrix
     {
-        private double[,] data;
+        private int[,] data;
+        private static Random random = new Random();
+        private static int minValue = 0;
+        private static int maxValue = 10;
 
         public int Rows { get; set; }
         public int Cols { get; set; }
 
-        public double this[int rowIndex, int colIndex]
+        public int this[int rowIndex, int colIndex]
         {
             get
             {
+                if (rowIndex < 0 || rowIndex >= Rows || colIndex < 0 || colIndex >= Cols)
+                    throw new IndexOutOfRangeException("Индекс выходит за границы матрицы");
                 return data[rowIndex, colIndex];
             }
             set
             {
+                if (rowIndex < 0 || rowIndex >= Rows || colIndex < 0 || colIndex >= Cols)
+                    throw new IndexOutOfRangeException("Индекс выходит за границы матрицы");
                 data[rowIndex, colIndex] = value;
             }
+        }
+
+        public MyMatrix(int rows, int cols)
+        {
+            Rows = rows;
+            Cols = cols;
+            data = new int[Rows, Cols];
+            Fill();
         }
 
         public MyMatrix()
         {
             Rows = ReadInt("Введите количество строк: ");
             Cols = ReadInt("Введите количество столбцов: ");
-            data = new double[Rows, Cols];
-
-            FillWithUserInput();
-        }
-
-        private MyMatrix(int rows, int cols)
-        {
-            Rows = rows;
-            Cols = cols;
-            data = new double[Rows, Cols];
+            data = new int[Rows, Cols];
+            Fill();
         }
 
         private int ReadInt(string prompt)
@@ -51,117 +58,98 @@ namespace Task1
             }
         }
 
-        private void FillWithUserInput()
+        public void Fill()
         {
             for (int i = 0; i < Rows; i++)
             {
                 for (int j = 0; j < Cols; j++)
                 {
-                    while (true)
+                    data[i, j] = random.Next(minValue, maxValue + 1);
+                }
+            }
+        }
+
+        public void ChangeSize(int newRows, int newCols)
+        {
+            int[,] newData = new int[newRows, newCols];
+            
+            int copyRows = Math.Min(Rows, newRows);
+            int copyCols = Math.Min(Cols, newCols);
+            
+            for (int i = 0; i < copyRows; i++)
+            {
+                for (int j = 0; j < copyCols; j++)
+                {
+                    newData[i, j] = data[i, j];
+                }
+            }
+            
+            for (int i = 0; i < newRows; i++)
+            {
+                for (int j = 0; j < newCols; j++)
+                {
+                    if (i >= copyRows || j >= copyCols)
                     {
-                        Console.Write($"a[{i},{j}]= ");
-                        string? s = Console.ReadLine();
-                        if (double.TryParse(s, out double value))
-                        {
-                            data[i, j] = value;
-                            break;
-                        }
-                        Console.WriteLine("Введите число.");
+                        newData[i, j] = random.Next(minValue, maxValue + 1);
                     }
                 }
             }
+            
+            data = newData;
+            Rows = newRows;
+            Cols = newCols;
         }
 
-        public static MyMatrix operator +(MyMatrix left, MyMatrix right)
+        public void ShowPartially(int startRow, int endRow, int startCol, int endCol)
         {
-            if (left.Rows != right.Rows || left.Cols != right.Cols) throw new ArgumentException();
-
-            var result = new MyMatrix(left.Rows, left.Cols);
-            for (int i = 0; i < left.Rows; i++)
+            if (startRow < 0 || endRow >= Rows || startCol < 0 || endCol >= Cols || 
+                startRow > endRow || startCol > endCol)
             {
-                for (int j = 0; j < left.Cols; j++)
-                {
-                    result.data[i, j] = left.data[i, j] + right.data[i, j];
-                }
+                Console.WriteLine("Некорректные границы для вывода");
+                return;
             }
-            return result;
-        }
 
-        public static MyMatrix operator -(MyMatrix left, MyMatrix right)
-        {
-            if (left.Rows != right.Rows || left.Cols != right.Cols) throw new ArgumentException();
-
-            var result = new MyMatrix(left.Rows, left.Cols);
-            for (int i = 0; i < left.Rows; i++)
+            for (int i = startRow; i <= endRow; i++)
             {
-                for (int j = 0; j < left.Cols; j++)
+                for (int j = startCol; j <= endCol; j++)
                 {
-                    result.data[i, j] = left.data[i, j] - right.data[i, j];
+                    Console.Write($"{data[i, j]}\t");
                 }
+                Console.WriteLine();
             }
-            return result;
         }
 
-        public static MyMatrix operator *(MyMatrix left, MyMatrix right)
+        public void Show()
         {
-            if (left.Cols != right.Rows) throw new ArgumentException();
-
-            var result = new MyMatrix(left.Rows, right.Cols);
-            for (int i = 0; i < left.Rows; i++)
-            {
-                for (int j = 0; j < right.Cols; j++)
-                {
-                    double sum = 0;
-                    for (int k = 0; k < left.Cols; k++)
-                    {
-                        sum += left.data[i, k] * right.data[k, j];
-                    }
-                    result.data[i, j] = sum;
-                }
-            }
-            return result;
-        }
-
-        public static MyMatrix operator *(MyMatrix matrix, double scalar)
-        {
-            var result = new MyMatrix(matrix.Rows, matrix.Cols);
-            for (int i = 0; i < matrix.Rows; i++)
-            {
-                for (int j = 0; j < matrix.Cols; j++)
-                {
-                    result.data[i, j] = matrix.data[i, j] * scalar;
-                }
-            }
-            return result;
-        }
-
-        public static MyMatrix operator /(MyMatrix matrix, double divisor)
-        {
-            if (divisor == 0) throw new DivideByZeroException();
-            var result = new MyMatrix(matrix.Rows, matrix.Cols);
-            for (int i = 0; i < matrix.Rows; i++)
-            {
-                for (int j = 0; j < matrix.Cols; j++)
-                {
-                    result.data[i, j] = matrix.data[i, j] / divisor;
-                }
-            }
-            return result;
-        }
-
-        public override string ToString()
-        {
-            var sb = new System.Text.StringBuilder();
             for (int i = 0; i < Rows; i++)
             {
                 for (int j = 0; j < Cols; j++)
                 {
-                    sb.Append(data[i, j]);
-                    sb.Append('\t');
+                    Console.Write($"{data[i, j]}\t");
                 }
-                sb.AppendLine();
+                Console.WriteLine();
             }
-            return sb.ToString();
+        }
+
+        public static void SetRandomRange()
+        {
+            Console.WriteLine("Введите диапазон случайных чисел:");
+            minValue = ReadIntStatic("Минимальное значение: ");
+            maxValue = ReadIntStatic("Максимальное значение: ");
+        }
+
+        private static int ReadIntStatic(string prompt)
+        {
+            while (true)
+            {
+                Console.Write(prompt);
+                string? s = Console.ReadLine();
+                if (int.TryParse(s, out int value))
+                {
+                    return value;
+                }
+                Console.WriteLine("Введите целое число.");
+            }
         }
     }
 
@@ -171,39 +159,35 @@ namespace Task1
         {
             Console.WriteLine("=== Демонстрация работы с матрицами ===");
             
-            Console.WriteLine("Создание матрицы A:");
-            MyMatrix matrixA = new MyMatrix();
+            MyMatrix.SetRandomRange();
             
-            Console.WriteLine("Создание матрицы B:");
-            MyMatrix matrixB = new MyMatrix();
+            Console.WriteLine("\nСоздание матрицы A (3x3):");
+            MyMatrix matrixA = new MyMatrix(3, 3);
             
             Console.WriteLine("\nМатрица A:");
-            Console.WriteLine(matrixA);
+            matrixA.Show();
             
-            Console.WriteLine("Матрица B:");
-            Console.WriteLine(matrixB);
+            Console.WriteLine("\nЧастичный вывод матрицы A (строки 0-1, столбцы 0-1):");
+            matrixA.ShowPartially(0, 1, 0, 1);
             
-            // Сложение
-            MyMatrix sum = matrixA + matrixB;
-            Console.WriteLine("A + B:");
-            Console.WriteLine(sum);
+            // Демонстрация изменения размера
+            Console.WriteLine("\nИзменение размера матрицы A на 4x4:");
+            matrixA.ChangeSize(4, 4);
+            matrixA.Show();
             
-            // Вычитание
-            MyMatrix diff = matrixA - matrixB;
-            Console.WriteLine("A - B:");
-            Console.WriteLine(diff);
+            Console.WriteLine("\nПерезаполнение матрицы A:");
+            matrixA.Fill();
+            matrixA.Show();
             
-            // Умножение на скаляр
-            MyMatrix scaled = matrixA * 2.5;
-            Console.WriteLine("A * 2.5:");
-            Console.WriteLine(scaled);
+            Console.WriteLine("\nДоступ к элементам через индексатор:");
+            Console.WriteLine($"matrixA[0,0] = {matrixA[0, 0]}");
+            Console.WriteLine($"matrixA[1,1] = {matrixA[1, 1]}");
             
-            // Деление на скаляр
-            MyMatrix divided = matrixA / 2.0;
-            Console.WriteLine("A / 2.0:");
-            Console.WriteLine(divided);
+            matrixA[0, 0] = 99;
+            Console.WriteLine("После изменения matrixA[0,0] = 99:");
+            matrixA.Show();
             
-            Console.WriteLine("Нажмите любую клавишу для выхода...");
+            Console.WriteLine("\nНажмите любую клавишу для выхода...");
             Console.ReadKey();
         }
     }
