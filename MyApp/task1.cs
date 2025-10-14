@@ -2,125 +2,145 @@ using System;
 
 namespace Task1
 {
-    public struct Vector
+    public class MyMatrix
     {
-        public double x;
-        public double y;
-        public double z;
+        private readonly int[,] data;
 
-        public Vector(double x, double y, double z)
+        public int Rows { get; }
+        public int Cols { get; }
+
+        public int this[int rowIndex, int colIndex]
         {
-            this.x = x;
-            this.y = y;
-            this.z = z;
-        }
-
-        public double Length() {
-            return Math.Sqrt(x * x + y * y + z * z);
-        }
-
-        public static Vector operator +(Vector a, Vector b)
-        {
-            return new Vector(a.x + b.x, a.y + b.y, a.z + b.z);
-        }
-
-        public static double operator *(Vector a, Vector b)
-        {
-            return a.x * b.x + a.y * b.y + a.z * b.z;
-        }
-
-        public static Vector operator *(Vector a, double k)
-        {
-            return new Vector(a.x * k, a.y * k, a.z * k);
-        }
-
-        public static Vector operator *(double k, Vector a)
-        {
-            return a * k;
-        }
-
-        public static bool operator ==(Vector a, Vector b)
-        {
-            return a.Length() == b.Length();
-        }
-
-        public static bool operator !=(Vector a, Vector b)
-        {
-            return !(a == b);
-        }
-
-        public static bool operator <(Vector a, Vector b)
-        {
-            return a.Length() < b.Length();
-        }
-
-        public static bool operator >(Vector a, Vector b)
-        {
-            return a.Length() > b.Length();
-        }
-
-        public static bool operator <=(Vector a, Vector b)
-        {
-            return a.Length() <= b.Length();
-        }
-
-        public static bool operator >=(Vector a, Vector b)
-        {
-            return a.Length() >= b.Length();
-        }
-
-        public override bool Equals(object? obj)
-        {
-            if (obj is Vector v)
+            get
             {
-                return x == v.x && y == v.y && z == v.z;
+                return data[rowIndex, colIndex];
             }
-            return false;
+            set
+            {
+                data[rowIndex, colIndex] = value;
+            }
         }
 
-        public override int GetHashCode()
+        public MyMatrix(int rows, int cols)
         {
-            return HashCode.Combine(x, y, z);
+            Rows = rows;
+            Cols = cols;
+            data = new int[Rows, Cols];
+
+            FillWithUserInput();
+        }
+
+        private void FillWithUserInput()
+        {
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Cols; j++)
+                {
+                    while (true)
+                    {
+                        Console.Write($"a[{i},{j}]= ");
+                        string? s = Console.ReadLine();
+                        if (int.TryParse(s, out int value))
+                        {
+                            data[i, j] = value;
+                            break;
+                        }
+                        Console.WriteLine("Введите целое число.");
+                    }
+                }
+            }
+        }
+
+        public static MyMatrix operator +(MyMatrix left, MyMatrix right)
+        {
+            if (left.Rows != right.Rows || left.Cols != right.Cols) throw new ArgumentException();
+
+            var result = new MyMatrix(left.Rows, left.Cols) { };
+            for (int i = 0; i < left.Rows; i++)
+            {
+                for (int j = 0; j < left.Cols; j++)
+                {
+                    result.data[i, j] = left.data[i, j] + right.data[i, j];
+                }
+            }
+            return result;
+        }
+
+        public static MyMatrix operator -(MyMatrix left, MyMatrix right)
+        {
+            if (left.Rows != right.Rows || left.Cols != right.Cols) throw new ArgumentException();
+
+            var result = new MyMatrix(left.Rows, left.Cols) { };
+            for (int i = 0; i < left.Rows; i++)
+            {
+                for (int j = 0; j < left.Cols; j++)
+                {
+                    result.data[i, j] = left.data[i, j] - right.data[i, j];
+                }
+            }
+            return result;
+        }
+
+        public static MyMatrix operator *(MyMatrix left, MyMatrix right)
+        {
+            if (left.Cols != right.Rows) throw new ArgumentException();
+
+            var result = new MyMatrix(left.Rows, right.Cols) { };
+            for (int i = 0; i < left.Rows; i++)
+            {
+                for (int j = 0; j < right.Cols; j++)
+                {
+                    int sum = 0;
+                    for (int k = 0; k < left.Cols; k++)
+                    {
+                        sum += left.data[i, k] * right.data[k, j];
+                    }
+                    result.data[i, j] = sum;
+                }
+            }
+            return result;
+        }
+
+        public static MyMatrix operator *(MyMatrix matrix, int scalar)
+        {
+            var result = new MyMatrix(matrix.Rows, matrix.Cols) { };
+            for (int i = 0; i < matrix.Rows; i++)
+            {
+                for (int j = 0; j < matrix.Cols; j++)
+                {
+                    result.data[i, j] = matrix.data[i, j] * scalar;
+                }
+            }
+            return result;
+        }
+
+        public static MyMatrix operator /(MyMatrix matrix, int divisor)
+        {
+            if (divisor == 0) throw new DivideByZeroException();
+            var result = new MyMatrix(matrix.Rows, matrix.Cols) { };
+            for (int i = 0; i < matrix.Rows; i++)
+            {
+                for (int j = 0; j < matrix.Cols; j++)
+                {
+                    result.data[i, j] = matrix.data[i, j] / divisor;
+                }
+            }
+            return result;
         }
 
         public override string ToString()
         {
-            return $"({x}, {y}, {z}) |L|={Length()}";
-        }
-    }
-
- 
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Vector v1 = new Vector(1, 2, 3);
-            Vector v2 = new Vector(3, 2, 1);
-
-            Console.WriteLine($"v1 = {v1}");
-            Console.WriteLine($"v2 = {v2}");
-
-            var sum = v1 + v2;
-            Console.WriteLine($"v1 + v2 = {sum}");
-
-            var dot = v1 * v2;
-            Console.WriteLine($"v1 * v2 (dot) = {dot}");
-
-            var scaled1 = v1 * 2;
-            var scaled2 = 2 * v2;
-            Console.WriteLine($"v1 * 2 = {scaled1}");
-            Console.WriteLine($"2 * v2 = {scaled2}");
-
-            Console.WriteLine($"v1 == v2 ? { (v1 == v2) }");
-            Console.WriteLine($"v1 != v2 ? { (v1 != v2) }");
-            Console.WriteLine($"v1 < v2 ? { (v1 < v2) }");
-            Console.WriteLine($"v1 > v2 ? { (v1 > v2) }");
-            Console.WriteLine($"v1 <= v2 ? { (v1 <= v2) }");
-            Console.WriteLine($"v1 >= v2 ? { (v1 >= v2) }");
-
-            Console.ReadKey();
+            var sb = new System.Text.StringBuilder();
+            for (int i = 0; i < Rows; i++)
+            {
+                for (int j = 0; j < Cols; j++)
+                {
+                    sb.Append(data[i, j]);
+                    sb.Append('\t');
+                }
+                sb.AppendLine();
+            }
+            return sb.ToString();
         }
     }
 }
-
-

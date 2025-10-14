@@ -1,131 +1,62 @@
 using System;
-using System.Globalization;
+using System.Collections;
+using System.Collections.Generic;
+using Task2;
 
 namespace Task3
 {
-    public abstract class Currency
+    public class CarCatalog : IEnumerable<Car>
     {
-        public decimal Value { get; set; }
+        private readonly Car[] cars;
 
-        protected Currency() {}
-
-        protected Currency(decimal value)
+        public CarCatalog(Car[] cars)
         {
-            Value = value;
+            this.cars = cars;
         }
 
-        public override string ToString()
+        public IEnumerator<Car> GetEnumerator()
         {
-            return $"{GetType().Name}: {Value}";
-        }
-    }
-
-    public static class CurrencyRates
-    {
-        public static decimal UsdToRub { get; set; } = 0;
-        public static decimal EurToRub { get; set; } = 0;
-    }
-
-    public class CurrencyUSD : Currency
-    {
-        public CurrencyUSD(decimal value)
-        {
-            Value = value;
+            for (int i = 0; i < cars.Length; i++)
+            {
+                yield return cars[i];
+            }
         }
 
-        // USD -> RUB (неявно)
-        public static implicit operator CurrencyRUB(CurrencyUSD usd)
+        IEnumerator IEnumerable.GetEnumerator()
         {
-            return new CurrencyRUB(usd.Value * CurrencyRates.UsdToRub);
+            return GetEnumerator();
         }
 
-        // USD -> EUR (явно через RUB)
-        public static explicit operator CurrencyEUR(CurrencyUSD usd)
+        public IEnumerable<Car> Reverse()
         {
-            decimal rub = usd.Value * CurrencyRates.UsdToRub;
-            decimal eur = CurrencyRates.EurToRub == 0 ? 0 : rub / CurrencyRates.EurToRub;
-            return new CurrencyEUR(eur);
-        }
-    }
-
-    public class CurrencyEUR : Currency
-    {
-        public CurrencyEUR(decimal value)
-        {
-            Value = value;
+            for (int i = cars.Length - 1; i >= 0; i--)
+            {
+                yield return cars[i];
+            }
         }
 
-        // EUR -> RUB (неявно)
-        public static implicit operator CurrencyRUB(CurrencyEUR eur)
+        public IEnumerable<Car> WhereYear(int productionYear)
         {
-            return new CurrencyRUB(eur.Value * CurrencyRates.EurToRub);
+            for (int i = 0; i < cars.Length; i++)
+            {
+                if (cars[i].ProductionYear == productionYear)
+                {
+                    yield return cars[i];
+                }
+            }
         }
 
-        // EUR -> USD (явно через RUB)
-        public static explicit operator CurrencyUSD(CurrencyEUR eur)
+        public IEnumerable<Car> WhereMaxSpeedAtLeast(int minMaxSpeed)
         {
-            decimal rub = eur.Value * CurrencyRates.EurToRub;
-            decimal usd = CurrencyRates.UsdToRub == 0 ? 0 : rub / CurrencyRates.UsdToRub;
-            return new CurrencyUSD(usd);
-        }
-    }
-
-    public class CurrencyRUB : Currency
-    {
-        public CurrencyRUB(decimal value)
-        {
-            Value = value;
-        }
-
-        // RUB -> USD (явно)
-        public static explicit operator CurrencyUSD(CurrencyRUB rub)
-        {
-            decimal usd = CurrencyRates.UsdToRub == 0 ? 0 : rub.Value / CurrencyRates.UsdToRub;
-            return new CurrencyUSD(usd);
-        }
-
-        // RUB -> EUR (явно)
-        public static explicit operator CurrencyEUR(CurrencyRUB rub)
-        {
-            decimal eur = CurrencyRates.EurToRub == 0 ? 0 : rub.Value / CurrencyRates.EurToRub;
-            return new CurrencyEUR(eur);
-        }
-    }
-
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Введите курс USD->RUB:");
-            CurrencyRates.UsdToRub = ReadDecimal();
-
-            Console.WriteLine("Введите курс EUR->RUB:");
-            CurrencyRates.EurToRub = ReadDecimal();
-
-            CurrencyUSD usd = new CurrencyUSD(3);
-            CurrencyEUR eur = new CurrencyEUR(3);
-            CurrencyRUB rubFromUsd = usd; // неявно в RUB
-            CurrencyRUB rubFromEur = eur; // неявно в RUB
-            CurrencyUSD usdFromRub = (CurrencyUSD)rubFromEur; // явно
-            CurrencyEUR eurFromUsd = (CurrencyEUR)usd;        // явно
-
-            Console.WriteLine(usd);
-            Console.WriteLine(eur);
-            Console.WriteLine(rubFromUsd);
-            Console.WriteLine(rubFromEur);
-            Console.WriteLine(usdFromRub);
-            Console.WriteLine(eurFromUsd);
-
-            Console.ReadKey();
-        }
-
-        private static decimal ReadDecimal()
-        {
-            string? s = Console.ReadLine();
-            if (s == null) return 0m;
-            decimal.TryParse(s, NumberStyles.Number, CultureInfo.CurrentCulture, out var v);
-            return v;
+            for (int i = 0; i < cars.Length; i++)
+            {
+                if (cars[i].MaxSpeed >= minMaxSpeed)
+                {
+                    yield return cars[i];
+                }
+            }
         }
     }
 }
+
 
