@@ -118,7 +118,7 @@ namespace Task3
                 value = items[index].Value;
                 return true;
             }
-            value = default(TValue);
+            value = default(TValue)!;
             return false;
         }
 
