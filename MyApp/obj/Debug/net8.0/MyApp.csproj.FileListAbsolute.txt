@@ -12,3 +12,7 @@
 /home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/MyApp/obj/Debug/net8.0/MyApp.pdb
 /home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/MyApp/obj/Debug/net8.0/MyApp.genruntimeconfig.cache
 /home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/MyApp/obj/Debug/net8.0/ref/MyApp.dll
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/MyApp/bin/Debug/net8.0/AnimalsLib.dll
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/MyApp/bin/Debug/net8.0/AnimalsLib.pdb
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/MyApp/obj/Debug/net8.0/MyApp.csproj.AssemblyReference.cache
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/MyApp/obj/Debug/net8.0/MyApp.csproj.CopyComplete

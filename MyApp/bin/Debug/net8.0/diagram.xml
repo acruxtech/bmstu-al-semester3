@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<library name="AnimalsLib">
+  <class name="Animal" base="Object" abstract="true">
+    <properties>
+      <property name="Name" type="String" />
+      <property name="Country" type="String" />
+      <property name="HideFromOtherAnimals" type="Boolean" />
+      <property name="WhatAnimal" type="String" />
+      <property name="Classification" type="eClassificationAnimal" />
+    </properties>
+    <methods>
+      <method name="SayHello" />
+      <method name="GetClassificationAnimal" />
+      <method name="GetFavouriteFood" />
+    </methods>
+  </class>
+  <class name="CommentAttribute" base="Attribute" abstract="false">
+    <properties>
+      <property name="Comment" type="String" />
+    </properties>
+    <methods />
+  </class>
+  <class name="Cow" base="Animal" abstract="false">
+    <properties />
+    <methods>
+      <method name="GetFavouriteFood" />
+    </methods>
+  </class>
+  <enum name="eClassificationAnimal">
+    <member name="Herbivores" />
+    <member name="Carnivores" />
+    <member name="Omnivores" />
+  </enum>
+  <enum name="eFavouriteFood">
+    <member name="Meat" />
+    <member name="Plants" />
+    <member name="Everything" />
+  </enum>
+  <class name="Lion" base="Animal" abstract="false">
+    <properties />
+    <methods>
+      <method name="GetFavouriteFood" />
+    </methods>
+  </class>
+  <class name="Pig" base="Animal" abstract="false">
+    <properties />
+    <methods>
+      <method name="GetFavouriteFood" />
+    </methods>
+  </class>
+</library>

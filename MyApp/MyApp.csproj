@@ -9,5 +9,8 @@
   <PropertyGroup>
     <StartupObject>Task1.Program</StartupObject>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AnimalsLib\AnimalsLib.csproj" />
+  </ItemGroup>
 
 </Project>

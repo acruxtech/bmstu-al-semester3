@@ -7,14 +7,27 @@
   "targets": {
     ".NETCoreApp,Version=v8.0": {
       "MyApp/1.0.0": {
+        "dependencies": {
+          "AnimalsLib": "1.0.0"
+        },
         "runtime": {
           "MyApp.dll": {}
+        }
+      },
+      "AnimalsLib/1.0.0": {
+        "runtime": {
+          "AnimalsLib.dll": {}
         }
       }
     }
   },
   "libraries": {
     "MyApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AnimalsLib/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
