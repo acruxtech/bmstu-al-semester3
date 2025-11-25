@@ -1,0 +1,14 @@
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/FileSearchApp/bin/Debug/net8.0/FileSearchApp
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/FileSearchApp/bin/Debug/net8.0/FileSearchApp.deps.json
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/FileSearchApp/bin/Debug/net8.0/FileSearchApp.runtimeconfig.json
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/FileSearchApp/bin/Debug/net8.0/FileSearchApp.dll
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/FileSearchApp/bin/Debug/net8.0/FileSearchApp.pdb
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/FileSearchApp/obj/Debug/net8.0/FileSearchApp.GeneratedMSBuildEditorConfig.editorconfig
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/FileSearchApp/obj/Debug/net8.0/FileSearchApp.AssemblyInfoInputs.cache
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/FileSearchApp/obj/Debug/net8.0/FileSearchApp.AssemblyInfo.cs
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/FileSearchApp/obj/Debug/net8.0/FileSearchApp.csproj.CoreCompileInputs.cache
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/FileSearchApp/obj/Debug/net8.0/FileSearchApp.dll
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/FileSearchApp/obj/Debug/net8.0/refint/FileSearchApp.dll
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/FileSearchApp/obj/Debug/net8.0/FileSearchApp.pdb
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/FileSearchApp/obj/Debug/net8.0/FileSearchApp.genruntimeconfig.cache
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/FileSearchApp/obj/Debug/net8.0/ref/FileSearchApp.dll
