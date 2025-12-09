@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "SerializerApp/1.0.0": {
+        "dependencies": {
+          "AnimalsLib": "1.0.0"
+        },
+        "runtime": {
+          "SerializerApp.dll": {}
+        }
+      },
+      "AnimalsLib/1.0.0": {
+        "runtime": {
+          "AnimalsLib.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SerializerApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AnimalsLib/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
