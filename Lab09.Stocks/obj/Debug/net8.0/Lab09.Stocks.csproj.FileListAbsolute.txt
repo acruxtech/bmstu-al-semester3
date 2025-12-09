@@ -1,0 +1,14 @@
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab09.Stocks/bin/Debug/net8.0/Lab09.Stocks
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab09.Stocks/bin/Debug/net8.0/Lab09.Stocks.deps.json
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab09.Stocks/bin/Debug/net8.0/Lab09.Stocks.runtimeconfig.json
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab09.Stocks/bin/Debug/net8.0/Lab09.Stocks.dll
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab09.Stocks/bin/Debug/net8.0/Lab09.Stocks.pdb
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab09.Stocks/obj/Debug/net8.0/Lab09.Stocks.GeneratedMSBuildEditorConfig.editorconfig
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab09.Stocks/obj/Debug/net8.0/Lab09.Stocks.AssemblyInfoInputs.cache
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab09.Stocks/obj/Debug/net8.0/Lab09.Stocks.AssemblyInfo.cs
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab09.Stocks/obj/Debug/net8.0/Lab09.Stocks.csproj.CoreCompileInputs.cache
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab09.Stocks/obj/Debug/net8.0/Lab09.Stocks.dll
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab09.Stocks/obj/Debug/net8.0/refint/Lab09.Stocks.dll
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab09.Stocks/obj/Debug/net8.0/Lab09.Stocks.pdb
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab09.Stocks/obj/Debug/net8.0/Lab09.Stocks.genruntimeconfig.cache
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab09.Stocks/obj/Debug/net8.0/ref/Lab09.Stocks.dll
