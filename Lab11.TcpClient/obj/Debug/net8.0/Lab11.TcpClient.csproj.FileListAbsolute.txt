@@ -1,0 +1,14 @@
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab11.TcpClient/bin/Debug/net8.0/Lab11.TcpClient
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab11.TcpClient/bin/Debug/net8.0/Lab11.TcpClient.deps.json
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab11.TcpClient/bin/Debug/net8.0/Lab11.TcpClient.runtimeconfig.json
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab11.TcpClient/bin/Debug/net8.0/Lab11.TcpClient.dll
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab11.TcpClient/bin/Debug/net8.0/Lab11.TcpClient.pdb
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab11.TcpClient/obj/Debug/net8.0/Lab11.TcpClient.GeneratedMSBuildEditorConfig.editorconfig
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab11.TcpClient/obj/Debug/net8.0/Lab11.TcpClient.AssemblyInfoInputs.cache
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab11.TcpClient/obj/Debug/net8.0/Lab11.TcpClient.AssemblyInfo.cs
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab11.TcpClient/obj/Debug/net8.0/Lab11.TcpClient.csproj.CoreCompileInputs.cache
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab11.TcpClient/obj/Debug/net8.0/Lab11.TcpClient.dll
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab11.TcpClient/obj/Debug/net8.0/refint/Lab11.TcpClient.dll
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab11.TcpClient/obj/Debug/net8.0/Lab11.TcpClient.pdb
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab11.TcpClient/obj/Debug/net8.0/Lab11.TcpClient.genruntimeconfig.cache
+/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab11.TcpClient/obj/Debug/net8.0/ref/Lab11.TcpClient.dll

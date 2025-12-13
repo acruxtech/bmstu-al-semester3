@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab11.TcpClient/Lab11.TcpClient.csproj": {}
+  },
+  "projects": {
+    "/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab11.TcpClient/Lab11.TcpClient.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab11.TcpClient/Lab11.TcpClient.csproj",
+        "projectName": "Lab11.TcpClient",
+        "projectPath": "/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab11.TcpClient/Lab11.TcpClient.csproj",
+        "packagesPath": "/home/acruxtech/.nuget/packages/",
+        "outputPath": "/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/Lab11.TcpClient/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/acruxtech/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/8.0.115/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
