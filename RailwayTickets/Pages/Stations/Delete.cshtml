@@ -1,0 +1,24 @@
+@page "{id:int}"
+@model RailwayTickets.Pages.Stations.DeleteModel
+@{
+    ViewData["Title"] = "Удалить станцию";
+}
+
+<h1>Удалить станцию</h1>
+
+<h4>Вы уверены, что хотите удалить эту запись?</h4>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Название</dt>
+        <dd class="col-sm-10">@Model.Station?.Name ?? ""</dd>
+        <dt class="col-sm-2">Город</dt>
+        <dd class="col-sm-10">@Model.Station?.City ?? ""</dd>
+    </dl>
+</div>
+
+<form method="post">
+    <input type="hidden" name="Station.Id" value="@(Model.Station?.Id ?? 0)" />
+    <button type="submit" class="btn btn-danger">Удалить</button>
+    <a asp-page="Index" class="btn btn-secondary">Назад</a>
+</form>
+

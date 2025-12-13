@@ -1,0 +1,39 @@
+@page
+@model RailwayTickets.Pages.Tickets.IndexModel
+@{
+    ViewData["Title"] = "Билеты";
+}
+
+<h1>Билеты</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Оформить билет</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Пассажир</th>
+        <th>Поезд</th>
+        <th>Маршрут</th>
+        <th>Цена</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Tickets)
+    {
+        <tr>
+            <td>@item.PassengerName</td>
+            <td>@item.Train?.Number</td>
+            <td>@item.FromStation?.Name - @item.ToStation?.Name</td>
+            <td>@item.Price.ToString("C")</td>
+            <td class="text-end">
+                <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Изменить</a>
+                <a asp-page="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Удалить</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
