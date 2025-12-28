@@ -1,0 +1,107 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dg="https://github.com/avaloniaui"
+        x:Class="lab013.MainWindow"
+        Title="Железная дорога - CRUD операции"
+        Width="1200"
+        Height="800"
+        Background="White"
+        WindowStartupLocation="CenterScreen">
+	<Grid RowDefinitions="Auto,*" Margin="10" Background="White">
+		<TextBlock Text="Система продажи билетов" 
+		           FontSize="24" 
+		           FontWeight="Bold" 
+		           HorizontalAlignment="Center" 
+		           Margin="0,0,0,10"/>
+		
+		<TabControl Grid.Row="1">
+			<TabItem Header="Поезда">
+				<Grid Background="White" Margin="10">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="*"/>
+					</Grid.RowDefinitions>
+					<StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+						<Button Content="Добавить" Click="AddTrain_Click" Width="100"/>
+						<Button Content="Изменить" Click="EditTrain_Click" Width="100"/>
+						<Button Content="Удалить" Click="DeleteTrain_Click" Width="100"/>
+						<Button Content="Обновить" Click="RefreshTrains_Click" Width="100"/>
+					</StackPanel>
+					<DataGrid x:Name="TrainsGrid" 
+					         Grid.Row="1"
+					         AutoGenerateColumns="True" 
+					         IsReadOnly="True"
+					         SelectionMode="Single"
+					         GridLinesVisibility="All"
+					         Background="White"/>
+				</Grid>
+			</TabItem>
+			
+			<TabItem Header="Маршруты">
+				<Grid Background="White" Margin="10">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="*"/>
+					</Grid.RowDefinitions>
+					<StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+						<Button Content="Добавить" Click="AddRoute_Click" Width="100"/>
+						<Button Content="Изменить" Click="EditRoute_Click" Width="100"/>
+						<Button Content="Удалить" Click="DeleteRoute_Click" Width="100"/>
+						<Button Content="Обновить" Click="RefreshRoutes_Click" Width="100"/>
+					</StackPanel>
+					<DataGrid x:Name="RoutesGrid" 
+					         Grid.Row="1"
+					         AutoGenerateColumns="True" 
+					         IsReadOnly="True"
+					         SelectionMode="Single"
+					         GridLinesVisibility="All"
+					         Background="White"/>
+				</Grid>
+			</TabItem>
+			
+			<TabItem Header="Пассажиры">
+				<Grid Background="White" Margin="10">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="*"/>
+					</Grid.RowDefinitions>
+					<StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+						<Button Content="Добавить" Click="AddPassenger_Click" Width="100"/>
+						<Button Content="Изменить" Click="EditPassenger_Click" Width="100"/>
+						<Button Content="Удалить" Click="DeletePassenger_Click" Width="100"/>
+						<Button Content="Обновить" Click="RefreshPassengers_Click" Width="100"/>
+					</StackPanel>
+					<DataGrid x:Name="PassengersGrid" 
+					         Grid.Row="1"
+					         AutoGenerateColumns="True" 
+					         IsReadOnly="True"
+					         SelectionMode="Single"
+					         GridLinesVisibility="All"
+					         Background="White"/>
+				</Grid>
+			</TabItem>
+			
+			<TabItem Header="Билеты">
+				<Grid Background="White" Margin="10">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="*"/>
+					</Grid.RowDefinitions>
+					<StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+						<Button Content="Добавить" Click="AddTicket_Click" Width="100"/>
+						<Button Content="Изменить" Click="EditTicket_Click" Width="100"/>
+						<Button Content="Удалить" Click="DeleteTicket_Click" Width="100"/>
+						<Button Content="Обновить" Click="RefreshTickets_Click" Width="100"/>
+					</StackPanel>
+					<DataGrid x:Name="TicketsGrid" 
+					         Grid.Row="1"
+					         AutoGenerateColumns="True" 
+					         IsReadOnly="True"
+					         SelectionMode="Single"
+					         GridLinesVisibility="All"
+					         Background="White"/>
+				</Grid>
+			</TabItem>
+		</TabControl>
+	</Grid>
+</Window>
