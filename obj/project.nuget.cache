@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zIliyvT4RdWGMUGoJpkxx8yFBGnW6tMm3rxMcBOaRv7zLj6Rg27yCzkmUIdOhFb00/4pw2/9fwUNItN8tmVPpw==",
+  "dgSpecHash": "JB+O6ZiCYZ76JmAN/duE7nptSqRRt5oME4n5Bfr5LxWQJXePNgqR7VPverkRQF+OFnmF5C3IF/brI8HMPJEt7g==",
   "success": true,
-  "projectFilePath": "/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/lab013/lab013.csproj",
+  "projectFilePath": "/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/lab013.csproj",
   "expectedPackageFiles": [
     "/home/acruxtech/.nuget/packages/avalonia/11.0.5/avalonia.11.0.5.nupkg.sha512",
     "/home/acruxtech/.nuget/packages/avalonia.angle.windows.natives/2.1.0.2023020321/avalonia.angle.windows.natives.2.1.0.2023020321.nupkg.sha512",

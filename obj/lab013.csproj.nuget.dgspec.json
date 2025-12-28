@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/lab013/lab013.csproj": {}
+    "/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/lab013.csproj": {}
   },
   "projects": {
-    "/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/lab013/lab013.csproj": {
+    "/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/lab013.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/lab013/lab013.csproj",
+        "projectUniqueName": "/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/lab013.csproj",
         "projectName": "lab013",
-        "projectPath": "/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/lab013/lab013.csproj",
+        "projectPath": "/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/lab013.csproj",
         "packagesPath": "/home/acruxtech/.nuget/packages/",
-        "outputPath": "/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/lab013/obj/",
+        "outputPath": "/home/acruxtech/Documents/study/bmstu_al/bmstu_al_semester_3/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/acruxtech/.nuget/NuGet/NuGet.Config"
